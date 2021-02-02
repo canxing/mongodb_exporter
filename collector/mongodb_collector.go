@@ -131,7 +131,8 @@ func (exporter *MongodbCollector) Collect(ch chan<- prometheus.Metric) {
 			exporter.collectConnPoolStats(mongoSess, ch)
 		}
 	} else {
-		upGauge.WithLabelValues().Set(float64(0))
+	  glog.Info("Mongodb unknown")
+		upGauge.WithLabelValues().Set(float64(2))
 		upGauge.Collect(ch)
 		upGauge.Reset()
 	}
